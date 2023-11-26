@@ -249,7 +249,7 @@ set.seed(17112000)
 chain_M2 <- MCMC_2(B = 101000, nj, yb, s2, mu0, g20, eta0, t20, nu0, s20)
 tictoc::toc()
 
-plot(1:10000,unlist(chain_M2$LL), type = "p", pch = ".", col="cyan", ylim=c(-2797970,-2775300), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 2")
+plot(1:10000,unlist(chain_M2$LL), type = "p", pch = ".", col="cyan", ylim=c(-2797970,-2797070), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 2")
 plot(chain_M2$THETA[,1],type = "p", pch = ".", xlab = "Iteración", ylab = expression(theta))
 plot(chain_M2$THETA[,33],type = "p", pch = ".", xlab = "Iteración", ylab = expression(sigma^2))
 plot(chain_M2$THETA[,34],type = "p", pch = ".", xlab = "Iteración", ylab = expression(mu))
@@ -356,7 +356,7 @@ set.seed(17112000)
 chain_M3 <- MCMC_3(B = 101000, nj, yb, s2, mu0, g20, eta0, t20, lam0, be0)
 tictoc::toc()
 
-plot(1:10000,unlist(chain_M3$LL), type = "p", pch = ".", col="blue", ylim=c(-2797970,-2775300), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 3")
+plot(1:10000,unlist(chain_M3$LL), type = "p", pch = ".", col="blue", ylim=c(-2797970,-2797070), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 3")
 plot(chain_M3$THETA[,1],type = "p", pch = ".", xlab = "Iteración", ylab = expression(theta))
 plot(chain_M3$THETA[,33],type = "p", pch = ".", xlab = "Iteración", ylab = expression(sigma_j))
 plot(chain_M3$THETA[,65],type = "p", pch = ".", xlab = "Iteración", ylab = expression(mu))
@@ -506,7 +506,7 @@ chain_M4 <- MCMC_4(B = 101000, njk, ybjk, s2jk, nk, eps0, ka20, mu0, g20, eta0, 
 tictoc::toc()
 
 par(mar=c(5, 5, 2, 2))
-plot(1:10000,unlist(chain_M4$LL), type = "p", pch = ".", col="red", ylim=c(-2797970,-2775300), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 4")
+plot(1:10000,unlist(chain_M4$LL), type = "p", pch = ".", col="red", ylim=c(-2775500,-2775350), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 4")
 plot(chain_M4$THETA[,1],type = "p", pch = ".", xlab = "Iteración", ylab = expression(zeta))
 plot(chain_M4$THETA[,1113],type = "p", pch = ".", xlab = "Iteración", ylab = expression(theta))
 plot(chain_M4$THETA[,1145],type = "p", pch = ".", xlab = "Iteración", ylab = expression(sigma^2))
@@ -665,7 +665,7 @@ chain_M5 <- MCMC_5(B = 101000, njk, ybjk, s2jk, nk, eps0, ka20, mu0, g20, eta0, 
 tictoc::toc()
 
 par(mar=c(5, 5, 2, 2))
-plot(1:10000,unlist(chain_M5$LL), type = "p", pch = ".", col="darkgreen", ylim=c(-2797970,-2775300), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 5")
+plot(1:10000,unlist(chain_M5$LL), type = "p", pch = ".", col="darkgreen", ylim=c(-2775500,-2775350), xlab = "Iteración", ylab = "Log-verosimilitud", main="Modelo 5")
 plot(chain_M5$THETA[,1],type = "p", pch = ".", xlab = "Iteración", ylab = expression(zeta))
 plot(chain_M5$THETA[,1113],type = "p", pch = ".", xlab = "Iteración", ylab = expression(theta))
 plot(chain_M5$THETA[,1145],type = "p", pch = ".", xlab = "Iteración", ylab = expression(sigma_j))
@@ -756,7 +756,7 @@ ggplot() +
   coord_sf(xlim=c(box$xmin,box$xmax),ylim=c(box$ymin,box$ymax),expand=FALSE) + #Aqui centramos el mapa en locombia
   geom_sf_text(data=mapdeptos,aes(label=ifelse(media_pun > quantile(media_pun, probs = 0.75, na.rm = TRUE),DPTO_CNMBR,"")),col="black",
                fontface="bold",size=2.5,fun.geometry=function(x) sf::st_centroid(x)) +
-  labs(x="Longitud",y="Latitud",title="Colombia",fill="Media del\nPuntaje\nGlobal") + #Nombre Ejes
+  labs(x="Longitud",y="Latitud",title="Colombia",fill="Media del/nPuntaje/nGlobal") + #Nombre Ejes
   scale_fill_gradient(low="lightgreen",high="red",n.breaks=5) + #Le damos colores de blanco a azul
   annotate("text", x=c(-74.5,-68,-78,-69,-78.5), y=c(-2.5,0,-1,9,9), colour="blue",
            label=c("Perú","Brasil","Ecuador","Venezuela","Panamá")) + #Coloco anotaciones en ciertas coordenadas
@@ -769,7 +769,7 @@ ggplot() +
   coord_sf(xlim=c(box$xmin,box$xmax),ylim=c(box$ymin,box$ymax),expand=FALSE) + #Aqui centramos el mapa en locombia
   geom_sf_text(data=mapdeptos,aes(label=ifelse(IPM < quantile(IPM, probs = 0.25, na.rm = TRUE),DPTO_CNMBR,"")),col="black",
                fontface="bold",size=2.5,fun.geometry=function(x) sf::st_centroid(x)) +
-  labs(x="Longitud",y="Latitud",title="Colombia",fill="Incidencia de\nla Pobreza\nMonetaria\nen 2018") + #Nombre Ejes
+  labs(x="Longitud",y="Latitud",title="Colombia",fill="Incidencia de/nla Pobreza/nMonetaria/nen 2018") + #Nombre Ejes
   scale_fill_gradient(low="lightgreen",high="red",n.breaks=5) + #Le damos colores de blanco a azul
   annotate("text", x=c(-74.5,-68,-78,-69,-78.5), y=c(-2.5,0,-1,9,9), colour="blue",
            label=c("Perú","Brasil","Ecuador","Venezuela","Panamá")) + #Coloco anotaciones en ciertas coordenadas
@@ -816,7 +816,7 @@ ggplot() +
   geom_sf(data=mundocol) +
   geom_sf(data=mapmup,aes(fill=media_pun),col="darkgray",linetype="solid") + #aes fill=media_pun, el color de relleno dependera de media_pun
   coord_sf(xlim=c(box$xmin,box$xmax),ylim=c(box$ymin,box$ymax),expand=FALSE) + #Aqui centramos el mapa en locombia
-  labs(x="Longitud",y="Latitud",title="Colombia",fill="Media del\nPuntaje\nGlobal") + #Nombre Ejes
+  labs(x="Longitud",y="Latitud",title="Colombia",fill="Media del/nPuntaje/nGlobal") + #Nombre Ejes
   scale_fill_gradient(low="lightpink",high="blue",n.breaks=5) + #Le damos colores de blanco a azul
   annotate("text", x=c(-74.5,-68,-78,-69,-78.5), y=c(-2.5,0,-1,9,9), colour="blue",
            label=c("Perú","Brasil","Ecuador","Venezuela","Panamá")) + #Coloco anotaciones en ciertas coordenadas
@@ -827,7 +827,7 @@ ggplot() +
   geom_sf(data=mundocol) +
   geom_sf(data=mapmup,aes(fill=CNS),col="darkgray",linetype="solid") + #aes fill=media_pun, el color de relleno dependera de media_pun
   coord_sf(xlim=c(box$xmin,box$xmax),ylim=c(box$ymin,box$ymax),expand=FALSE) + #Aqui centramos el mapa en locombia
-  labs(x="Longitud",y="Latitud",title="Colombia",fill="Cobertura\nNeta\nSecundaria") + #Nombre Ejes
+  labs(x="Longitud",y="Latitud",title="Colombia",fill="Cobertura/nNeta/nSecundaria") + #Nombre Ejes
   scale_fill_gradient(low="lightpink",high="blue",n.breaks=5) + #Le damos colores de blanco a azul
   annotate("text", x=c(-74.5,-68,-78,-69,-78.5), y=c(-2.5,0,-1,9,9), colour="blue",
            label=c("Perú","Brasil","Ecuador","Venezuela","Panamá")) + #Coloco anotaciones en ciertas coordenadas
@@ -1029,12 +1029,12 @@ quantile(chain_M5$THETA$mu, probs = c(0.025,0.975))
 
 ## Ranking frecuentista (promedio muestral) ####
 par(mfrow = c(1,1), mar = c(4,10,1.5,1), mgp = c(2.5,0.75,0))
-plot(x = c(0,500), y = c(1,m), type = "n", xlab = "Puntaje", ylab = "", main = "Ranking frecuentista (promedio muestral)", yaxt = "n")
+plot(x = c(180,320), y = c(1,m), type = "n", xlab = "Puntaje", ylab = "", main = "Ranking frecuentista (promedio muestral)", yaxt = "n")
 abline(h = 1:m, col = "lightgray", lwd = 1)
 abline(v = 250,col = "gray", lwd = 3)
 for (l in 1:m) {
   j <- order(yb)[l]
-  points(x = Y[[j]], y = rep(l, nj[j]), pch = 16, cex = 0.3)
+  #points(x = Y[[j]], y = rep(l, nj[j]), pch = 16, cex = 0.3)
   li<-yb[j]-1.96*(sd(Y[[j]])/sqrt(nj[j]))
   ls<-yb[j]+1.96*(sd(Y[[j]])/sqrt(nj[j]))
   lines(x = li, y = l, type = "p", col ="blue", pch = 16, cex = 1.1)
@@ -1063,12 +1063,12 @@ for(i in 1113:1144){
 }
 
 par(mfrow = c(1,1), mar = c(4,10,1.5,1), mgp = c(2.5,0.75,0))
-plot(x = c(0,500), y = c(1,m), type = "n", xlab = "Puntaje", ylab = "", main = "Ranking bayesiano (medias específicas)", yaxt = "n")
+plot(x = c(180,320), y = c(1,m), type = "n", xlab = "Puntaje", ylab = "", main = "Ranking bayesiano (medias específicas)", yaxt = "n")
 abline(h = 1:m, col = "lightgray", lwd = 1)
 abline(v = 250,col = "gray", lwd = 3)
 for (l in 1:m) {
   j <- order(yb_bayes)[l]
-  points(x = Y[[j]], y = rep(l, nj[j]), pch = 16, cex = 0.3)
+  #points(x = Y[[j]], y = rep(l, nj[j]), pch = 16, cex = 0.3)
   points(x = ic_bayes[j,], y = c(l,l), type = "p", col =c("blue","blue"), pch = 16, cex = 1.1)
   if(ic_bayes[j,2]<250){
     points(x = yb_bayes[j], y = l, col ="red", pch = 16, cex = 1.1)
@@ -1120,7 +1120,7 @@ original<-kmeans(yb_bayes, centers = k)
 xi<-original$cluster
 mapita_punto8 <- cbind(punto1,xi)
 mapita_punto8$xi<- as.character(mapita_punto8$xi)
-sindices <- order(xi)
+indices <- order(yb_bayes)
 A <- A[indices,indices]
 
 Punto8<-punto1%>%mutate(pos = row_number())%>%as.data.frame()
@@ -1174,9 +1174,9 @@ for(i in 1:10000){
 }
 
 # Medias posteriores
-mapita_punto9 <- cbind(punto1,c(rep(NA,24),colMeans(chain_M5$THETA[,1137:1144])))
-mapita_punto9 <- mapita_punto9[,c(1,2,5)]
-colnames(mapita_punto9)[3]<-"Media_post"
+mapita_punto9 <- cbind(punto1,c(rep(NA,24),colMeans(predDep)))
+mapita_punto9 <- mapita_punto9[,c(1,5)]
+colnames(mapita_punto9)[2]<-"Media_post"
 
 # Intervalos de Credibilidad
 icDep<-matrix(data = NA, nrow = 8, ncol = 2)
@@ -1189,8 +1189,7 @@ icDep
 #Usamos Left join para que haga el cruce por código de departamento y deje todas las columnas
 #de deptoshp
 mapdeptos <- deptoshp %>%
-  left_join(mapita_punto9,by=c("DPTO_CCDGO"="CodDep")) %>%
-  select(!(Departamento))
+  left_join(mapita_punto9,by=c("DPTO_CCDGO"="CodDep"))
 
 #Box calcula el rectangulo que envuelve a todo el conjunto de media_pun_tabla mapdeptos (locombia)
 #box deja un poquito a la izquierda porque tiene en cuenta a SAN ANDRES
@@ -1249,7 +1248,7 @@ original_mun<-kmeans(yb_mun_bayes, centers = k)
 xi<-original_mun$cluster
 mapita_punto10 <- cbind(punto2,xi)
 mapita_punto10$xi<- as.character(mapita_punto10$xi)
-indices <- order(xi)
+indices <- order(yb_mun_bayes,decreasing = T)
 A_mun <- A_mun[indices,indices]
 
 # visualización de la matriz de incidencia
@@ -1283,26 +1282,24 @@ ggplot() +
 # Punto 11 ####
 listaMun<-datos%>%group_by(COLE_COD_MCPIO_UBICACION)%>%summarise(num=1)%>%as.data.frame()
 cobertura$CÓDIGO_MUNICIPIO<-as.character(cobertura$CÓDIGO_MUNICIPIO)
-punto11<-listaMun%>%left_join(cobertura,by=c("COLE_COD_MCPIO_UBICACION"="CÓDIGO_MUNICIPIO"))
-punto11<-cobertura%>%left_join(listaMun,by=c("CÓDIGO_MUNICIPIO"="COLE_COD_MCPIO_UBICACION"))
+punto11<-cobertura%>%left_join(listaMun,by=c("CÓDIGO_MUNICIPIO"="COLE_COD_MCPIO_UBICACION"))%>%arrange(CÓDIGO_MUNICIPIO)
 punto11<-punto11[!is.na(punto11$num),]
 
 ## Regresion lineal simple ####
 predMun<-matrix(data = NA, nrow = 10000, ncol = 2)
-
 for(i in 1:10000){
-  x<-cbind(chain_M5$THETA[i,1:581],chain_M5$THETA[i,583:1097],chain_M5$THETA[i,1099:1112])
-  x<-as.vector(t(x)) # municipios observados en IPM
-  regMun<-lm(punto11$COBERTURA_NETA_SECUNDARIA~1+x)
+  x<-data.frame(cbind(chain_M5$THETA[i,1:581],chain_M5$THETA[i,583:1097],chain_M5$THETA[i,1099:1112]))
+  x<-as.vector(t(x)) # municipios observados en CSN
+  regMun<-lm(punto11$COBERTURA_NETA_SECUNDARIA~x)
   noMun<-as.vector(t(chain_M5$THETA[i,c(582,1098)])) # los que queremos predecir
   # almacenar
   predMun[i,]<- regMun$coefficients[1]+regMun$coefficients[2]*noMun # predicciones para los dos municipios en cada iteracion
 }
 
 # Medias posteriores
-mapita_punto11 <- cbind(punto2,c(rep(NA,574),colMeans(chain_M5$THETA[,575:605]),
-                                 c(rep(NA,490),colMeans(chain_M5$THETA[,1096:1101]),
-                                   c(rep(NA,11)))))
+mapita_punto11 <- cbind(punto2,c(rep(NA,574),punto2[575:605,6],
+                                 rep(NA,490),punto2[1096:1101,6],
+                                 rep(NA,11)))
 mapita_punto11 <- mapita_punto11[,c(1,2,3,4,7)]
 colnames(mapita_punto11)[5]<-"Media_post"
 mapita_punto11 <- rbind(mapita_punto11[1:1099,],
@@ -1313,8 +1310,8 @@ mapita_punto11 <- rbind(mapita_punto11[1:1099,],
 mapita_punto11$Media_post <- as.numeric(mapita_punto11$Media_post)
 
 # Intervalos de Credibilidad
-quantile(predMun[,1],probs = c(0.025,0.975)) # para Zeta 582
-quantile(predMun[,2],probs = c(0.025,0.975)) # para Zeta 1098
+round(quantile(predMun[,1],probs = c(0.025,0.975)),3) # para Zeta 582
+round(quantile(predMun[,2],probs = c(0.025,0.975)),3) # para Zeta 1098
 
 ## Mapa ####
 ### Choco ####
@@ -1332,7 +1329,7 @@ ggplot() +
   coord_sf(xlim=c(box$xmin,box$xmax),ylim=c(box$ymin,box$ymax),expand=FALSE) +
   geom_sf_text(data=choco,aes(label=ifelse((CodMup==27615 | CodMup==27150),Municipio,"")),col="black",
                fontface="bold",size=3,fun.geometry=function(x) sf::st_centroid(x)) +
-  labs(x="Longitud",y="Latitud",title="Choco",fill="Media posterior de\nMunicipio sin CSN") +
+  labs(x="Longitud",y="Latitud",title="Chocó",fill="Media posterior de\nMunicipio sin CSN") +
   scale_fill_gradient(low="yellow",high="darkgreen",n.breaks=5) +
   theme(panel.background=element_rect(fill="lightblue")) + mitema
 
@@ -1350,7 +1347,7 @@ ggplot() +
   coord_sf(xlim=c(box$xmin,box$xmax),ylim=c(box$ymin,box$ymax),expand=FALSE) +
   geom_sf_text(data=guainia,aes(label=ifelse((CodMup==94343 | CodMup==94001 | CodMup==94888),Municipio,"")),col="black",
                fontface="bold",size=3.5,fun.geometry=function(x) sf::st_centroid(x)) +
-  labs(x="Longitud",y="Latitud",title="Guainia",fill="Media posterior de\nMunicipio sin CSN") +
+  labs(x="Longitud",y="Latitud",title="Guainía",fill="Media posterior de\nMunicipio sin CSN") +
   scale_fill_gradient(low="yellow",high="darkgreen",n.breaks=5) + mitema
 
 ### Colombia ####
@@ -1367,7 +1364,7 @@ ggplot() +
   coord_sf(xlim=c(box$xmin,box$xmax),ylim=c(box$ymin,box$ymax),expand=FALSE) +
   geom_sf_text(data=col_mup,aes(label=ifelse((CodMup==1),Municipio,"")),col="black",
                fontface="bold",size=3.5,fun.geometry=function(x) sf::st_centroid(x)) +
-  labs(x="Longitud",y="Latitud",title="Colombia",fill="Media posterior de\nMunicipios sin CSN") +
+  labs(x="Longitud",y="Latitud",title="Colombia",fill="Media posterior de/nMunicipios sin CSN") +
   scale_fill_gradient(low="yellow",high="darkgreen",n.breaks=5) +
   annotate("text", x=c(-74.5,-68,-78,-69,-78.5), y=c(-2.5,0,-1,9,9), colour="blue",
            label=c("Perú","Brasil","Ecuador","Venezuela","Panamá")) + #Coloco anotaciones en ciertas coordenadas
@@ -1375,36 +1372,130 @@ ggplot() +
 
 
 # Punto 12 ####
-## Local ####
-est_obs <- c(min(y),max(y),IQR(y),mean(y),median(y),sd(y))
-names(est_obs) <- c("Min","Max","IQR","Media","Mediana","SD")
-est_obs
+##Bondad de Ajuste local Local ####
+indice<-rep(1:1112,njk)
+#Minimo
+tictoc::tic()
+#Especificamos los núcleos a usar en el pc
+cl <- makeCluster(7)
+registerDoParallel(cl)
+minimo <- numeric(0)
+minimo <- foreach(i = 1:10000, .combine = "rbind") %dopar% {
+  set.seed(17112000+i)
+  res <- rnorm(n = n, mean = rep(as.numeric(chain_M5$THETA[i,1:1112]),njk), sd = sqrt(chain_M5$THETA$kap2[i]))
+  minimo <- c(tapply(res, indice, min))
+}
+#Le quitamos lo de los nucleos, lo dejamos normal
+stopCluster(cl)
+tictoc::toc()
+
+#Máximo
+tictoc::tic()
+#Especificamos los núcleos a usar en el pc
+cl <- makeCluster(7)
+registerDoParallel(cl)
+maximo <- numeric(0)
+maximo <- foreach(i = 1:10000, .combine = "rbind") %dopar% {
+  set.seed(17112000+i)
+  res <- rnorm(n = n, mean = rep(as.numeric(chain_M5$THETA[i,1:1112]),njk), sd = sqrt(chain_M5$THETA$kap2[i]))
+  maximo <- c(tapply(res, indice, max))
+}
+#Le quitamos lo de los nucleos, lo dejamos normal
+stopCluster(cl)
+tictoc::toc()
+
+
+#IQR
+tictoc::tic()
+#Especificamos los núcleos a usar en el pc
+cl <- makeCluster(7)
+registerDoParallel(cl)
+iqr <- numeric(0)
+iqr <- foreach(i = 1:10000, .combine = "rbind") %dopar% {
+  set.seed(17112000+i)
+  res <- rnorm(n = n, mean = rep(as.numeric(chain_M5$THETA[i,1:1112]),njk), sd = sqrt(chain_M5$THETA$kap2[i]))
+  iqr <- c(tapply(res, indice, IQR))
+}
+#Le quitamos lo de los nucleos, lo dejamos normal
+stopCluster(cl)
+tictoc::toc()
+
+
+#Media
+tictoc::tic()
+#Especificamos los núcleos a usar en el pc
+cl <- makeCluster(7)
+registerDoParallel(cl)
+media <- numeric(0)
+media <- foreach(i = 1:10000, .combine = "rbind") %dopar% {
+  set.seed(17112000+i)
+  res <- rnorm(n = n, mean = rep(as.numeric(chain_M5$THETA[i,1:1112]),njk), sd = sqrt(chain_M5$THETA$kap2[i]))
+  media <- c(tapply(res, indice, mean))
+}
+#Le quitamos lo de los nucleos, lo dejamos normal
+stopCluster(cl)
+tictoc::toc()
+
+
+#Mediana
+tictoc::tic()
+#Especificamos los núcleos a usar en el pc
+cl <- makeCluster(7)
+registerDoParallel(cl)
+mediana <- numeric(0)
+mediana <- foreach(i = 1:10000, .combine = "rbind") %dopar% {
+  set.seed(17112000+i)
+  res <- rnorm(n = n, mean = rep(as.numeric(chain_M5$THETA[i,1:1112]),njk), sd = sqrt(chain_M5$THETA$kap2[i]))
+  mediana <- c(tapply(res, indice, median))
+}
+#Le quitamos lo de los nucleos, lo dejamos normal
+stopCluster(cl)
+tictoc::toc()
+
+
+#SD
+tictoc::tic()
+#Especificamos los núcleos a usar en el pc
+cl <- makeCluster(7)
+registerDoParallel(cl)
+SD <- numeric(0)
+SD <- foreach(i = 1:10000, .combine = "rbind") %dopar% {
+  set.seed(17112000+i)
+  res <- rnorm(n = n, mean = rep(as.numeric(chain_M5$THETA[i,1:1112]),njk), sd = sqrt(chain_M5$THETA$kap2[i]))
+  SD <- c(tapply(res, indice, sd))
+}
+#Le quitamos lo de los nucleos, lo dejamos normal
+stopCluster(cl)
+tictoc::toc()
+
+min_obs<-c(tapply(y, indice, min))
+max_obs<-c(tapply(y, indice, max))
+iqr_obs<-c(tapply(y, indice, IQR))
+med_obs<-c(tapply(y, indice, mean))
+median_obs<-c(tapply(y, indice, median))
+SD_obs<-c(tapply(y, indice, sd))
+
 
 tictoc::tic()
 #Especificamos los núcleos a usar en el pc
 cl <- makeCluster(7)
 registerDoParallel(cl)
-
 ppp <- numeric(0)
-for (j in 1:length(njk)){
-  est_mun <- numeric(0)
-  est_mun <- foreach(i = 1:10000, .combine = "rbind") %dopar% {
-    set.seed(17112000+i)
-    res <- rnorm(n=njk[j], mean = chain_M5$THETA[i,j], sd=sqrt(chain_M5$THETA$kap2[i]))
-    est_mun <- c(min(res),max(res),IQR(res),mean(res),median(res),sd(res))
-  }
-  ppp <- rbind(ppp,c(mean(est_mun[,1]<est_obs[1]),mean(est_mun[,2]<est_obs[2]),
-                     mean(est_mun[,3]<est_obs[3]),mean(est_mun[,4]<est_obs[4]),
-                     mean(est_mun[,5]<est_obs[5]),mean(est_mun[,6]<est_obs[6])))
+ppp <- foreach(i = 1:1112, .combine = "rbind") %dopar% {
+  ppp<-c(mean(minimo[,i]<min_obs[i]),
+         mean(maximo[,i]<max_obs[i]),
+         mean(iqr[,i]<iqr_obs[i]),
+         mean(media[,i]<med_obs[i]),
+         mean(mediana[,i]<median_obs[i]),
+         mean(SD[,i]<SD_obs[i]))
 }
-colnames(ppp) <- c("Min","Max","IQR","Media","Mediana","SD")
-ppp <- round(ppp, digits = 3)
-ppp
 #Le quitamos lo de los nucleos, lo dejamos normal
 stopCluster(cl)
 tictoc::toc()
 
-ppp_df <- melt(ppp)
+colnames(ppp) <- c("Min","Max","IQR","Media","Mediana","SD")
+
+ppp_df <- reshape2::melt(ppp)
 ppp_df <- ppp_df[,2:3]
 colnames(ppp_df) <- c("Grupo","Valor")
 
@@ -1424,33 +1515,3 @@ ggplot(ppp_df, aes(x = Grupo, y = Valor)) +
         plot.subtitle=element_text(face="bold",size=12,vjust=0.5,hjust=0.5,color="blue"),
         axis.title.x = element_text(hjust = 0.5, color = "blue"),
         axis.title.y = element_text(hjust = 0.5, color = "blue"))
-
-
-## Global ####
-tictoc::tic()
-#Especificamos los núcleos a usar en el pc
-cl <- makeCluster(7)
-registerDoParallel(cl)
-est_prueba <- foreach(j = 1:10000, .combine = "rbind") %dopar% {
-  res <- numeric(0)
-  set.seed(17112000+j)
-  for (i in 1:length(njk)){
-    res <- c(res,rnorm(n=njk[i], mean = chain_M5$THETA[j,i], sd=sqrt(chain_M5$THETA$kap2[j])))
-  }
-  est_prueba <- c(min(res),max(res),IQR(res),mean(res),median(res),sd(res))
-}
-#Le quitamos lo de los nucleos, lo dejamos normal
-stopCluster(cl)
-tictoc::toc()
-
-colnames(est_prueba)<-c("Min","Max","IQR","Media","Mediana","SD")
-res_final <- colMeans(est_prueba)
-names(res_final)<-c("Min","Max","IQR","Media","Mediana","SD")
-
-#ppp valores
-ppp_2 <- c(mean(est_prueba[,1]<est_obs[1]),mean(est_prueba[,2]<est_obs[2]),
-           mean(est_prueba[,3]<est_obs[3]),mean(est_prueba[,4]<est_obs[4]),
-           mean(est_prueba[,5]<est_obs[5]),mean(est_prueba[,6]<est_obs[6]))
-names(ppp_2) <- c("Min","Max","IQR","Media","Mediana","SD")
-ppp_2 <- round(ppp_2, digits = 3)
-ppp_2
