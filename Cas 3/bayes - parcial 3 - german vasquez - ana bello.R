@@ -539,7 +539,7 @@ est_prueba_largo <- est_prueba %>%
 
 # Histogramas
 gg_histogramas <- ggplot(est_prueba_largo, aes(x = Valor)) +
-  geom_histogram(fill = "lightblue", color = "black", alpha = 1) +
+  geom_density(fill = "lightblue", color = "black", alpha = 1) +
   facet_wrap(~Columna_original, scales = "fixed") +
   labs(title="Distribución Predictiva Posterior",
        x = "Valores Medias Bonda de Ajuste",
